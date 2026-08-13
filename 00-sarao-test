@@ -1,0 +1,4 @@
+[org/gnome/desktop/background]
+picture-uri='file:///usr/share/backgrounds/sarao/meerkat-sky.jpg'
+picture-uri-dark='file:///usr/share/backgrounds/sarao/meerkat-sky.jpg'
+picture-options='zoom'
