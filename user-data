@@ -1,7 +1,17 @@
 #cloud-config
 autoinstall:
   version: 1
+  keyboard:
+    layout: us
+  locale: en_ZA.UTF-8
+  shutdown: reboot
+  storage:
+    layout:
+      name: lvm
+      policy: all
+  timezone: Africa/Johannesburg
 
+  # Additional user
   identity:
     hostname: sarao-laptop
     username: sarao
