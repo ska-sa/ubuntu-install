@@ -12,7 +12,6 @@ autoinstall:
   timezone: Africa/Johannesburg
   packages:
     - git
-    - neofetch
     - vim
 
   # Additional user
