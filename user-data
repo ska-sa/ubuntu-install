@@ -10,6 +10,10 @@ autoinstall:
       name: lvm
       policy: all
   timezone: Africa/Johannesburg
+  packages:
+    - git
+    - neofetch
+    - vim
 
   # Additional user
   identity:
@@ -19,12 +23,6 @@ autoinstall:
     password: "$6$8IbpfCMIXpjWXyau$X/SwgC9V9iEvb9yo.ey0kM7LpaoErBFvYs9VXZ5PNRlunrUlL7ZLP8UNhewogO4hujMvzmjo8S7mz.0MQwq0C0"
 
   late-commands:
-    # Install extra packages from ubuntu repositories
-    - curtin in-target --target=/target -- apt-get install -y \
-      git \
-      neofetch \
-      vim
-
     # Wallpapers
     - curtin in-target --target=/target -- mkdir -p /usr/share/backgrounds/sarao /etc/dconf/db/local.d /etc/dconf/db/gdm.d
     - >-
