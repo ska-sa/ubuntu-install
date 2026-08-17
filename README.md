@@ -10,7 +10,7 @@ When the GRUB menu appears:
 1. Highlight "Try or Install Ubuntu", press **`e`** to edit.
 2. Find the `linux /casper/vmlinuz ...` line and append:
    ```
-   autoinstall ds=nocloud-net;s=https://raw.githubusercontent.com/ska-sa/ubuntu-install/refs/head/master/
+   autoinstall ds=nocloud-net;s=https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/
    ```
 3. Press **Ctrl+X** (or F10) to boot with that one-off edit.
 
