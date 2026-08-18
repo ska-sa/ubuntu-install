@@ -13,6 +13,7 @@ autoinstall:
   packages:
     - git
     - vim
+    - wget
 
   # Additional user
   identity:
