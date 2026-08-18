@@ -1,16 +1,11 @@
 # ubuntu-install for SARAO laptops
 
-Customizations for Ubuntu install. Intended for use with standard
-Ubuntu installer, aiming at supporting 24.04 and 26.04.
+Intended for use with standard Ubuntu 26.04 installer
+( https://releases.ubuntu.com/26.04/ubuntu-26.04-desktop-amd64.iso )
+
 
 ## Instructions
 
-When the GRUB menu appears:
-
-1. Highlight "Try or Install Ubuntu", press **`e`** to edit.
-2. Find the `linux /casper/vmlinuz ...` line and append:
-   ```
-   autoinstall ds=nocloud-net;s=https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/
-   ```
-3. Press **Ctrl+X** (or F10) to boot with that one-off edit.
+1. During normal installation, step 3 join network, step 4 choose Autoinstall.
+2. Address: `https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/user-data`
 
