@@ -16,7 +16,7 @@ autoinstall:
     - git
     - vim
 
-  # Additional user
+  # Set hostname and defer settting up user
   identity:
     hostname: nrf-sarao
     users: ['']
