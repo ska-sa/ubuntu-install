@@ -11,34 +11,42 @@ autoinstall:
       policy: all
   timezone: Africa/Johannesburg
   packages:
+    - curl
+    - gh
     - git
     - vim
-    - wget
 
   # Additional user
   identity:
-    hostname: sarao-laptop
-    username: sarao
-    realname: "SARAO IT Administrators"
-    password: "$6$8IbpfCMIXpjWXyau$X/SwgC9V9iEvb9yo.ey0kM7LpaoErBFvYs9VXZ5PNRlunrUlL7ZLP8UNhewogO4hujMvzmjo8S7mz.0MQwq0C0"
+    hostname: nrf-sarao
+    users: ['']
 
   late-commands:
     # Wallpapers
-    - curtin in-target --target=/target -- mkdir -p /usr/share/backgrounds/sarao /etc/dconf/db/local.d /etc/dconf/db/gdm.d
+    - curtin in-target -- mkdir -p /usr/share/backgrounds/sarao /etc/dconf/db/local.d /etc/dconf/db/gdm.d
     - >-
-      curtin in-target --target=/target -- wget -qO
-      /usr/share/backgrounds/sarao/meerkat-sky.jpg
+      curtin in-target -- curl -s
       https://raw.githubusercontent.com/ska₋sa/ubuntu-install/main/meerkat-sky.jpg
+      -o /usr/share/backgrounds/sarao/meerkat-sky.jpg
     - >-
-      curtin in-target --target=/target -- wget -qO
-      /etc/dconf/db/local.d/00-sarao-test
+      curtin in-target -- curl -s
       https://raw.githubusercontent.com/ska₋sa/ubuntu-install/main/00-sarao-bg
+      -o /etc/dconf/db/local.d/00-sarao-test
     - >-
-      curtin in-target --target=/target -- wget -qO
-      /etc/dconf/db/gdm.d/01-sarao-gdm-test
+      curtin in-target -- curl -s
       https://raw.githubusercontent.com/ska₋sa/ubuntu-install/main/01-sarao-gdm
+      -o /etc/dconf/db/gdm.d/01-sarao-gdm-test
     # Check whether necessary
+    #- >-
+    #  curtin in-target -- bash -c
+    #  "[ -f /etc/dconf/profile/gdm ] || printf 'user-db:user\nsystem-db:gdm\nfile-db:/usr/share/gdm/greeter-dconf-defaults\n' > /etc/dconf/profile/gdm"
+    - curtin in-target -- dconf update
+    # IT Administrator user
+    - curtin in-target -- adduser --disabled-password --gecos "SARAO IT Administrators" it-admin
     - >-
-      curtin in-target --target=/target -- bash -c
-      "[ -f /etc/dconf/profile/gdm ] || printf 'user-db:user\nsystem-db:gdm\nfile-db:/usr/share/gdm/greeter-dconf-defaults\n' > /etc/dconf/profile/gdm"
-    - curtin in-target --target=/target -- dconf update
+      curtin in-target -- usermod -aG
+      sudo,adm,cdrom,dip,plugdev,lpadmin,sambashare,netdev,audio,video,lxd it-admin
+    - >-
+      curtin in-target -- bash -c
+      "echo 'it-admin:$6$8IbpfCMIXpjWXyau$X/SwgC9V9iEvb9yo.ey0kM7LpaoErBFvYs9VXZ5PNRlunrUlL7ZLP8UNhewogO4hujMvzmjo8S7mz.0MQwq0C0' | chpasswd -e"
+
