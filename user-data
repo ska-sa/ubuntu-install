@@ -24,15 +24,15 @@ autoinstall:
     - curtin in-target -- mkdir -p /usr/share/backgrounds/sarao /etc/dconf/db/local.d /etc/dconf/db/gdm.d
     - >-
       curtin in-target -- curl -s
-      https://raw.githubusercontent.com/ska₋sa/ubuntu-install/main/meerkat-sky.jpg
+      https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/meerkat-sky.jpg
       -o /usr/share/backgrounds/sarao/meerkat-sky.jpg
     - >-
       curtin in-target -- curl -s
-      https://raw.githubusercontent.com/ska₋sa/ubuntu-install/main/00-sarao-bg
+      https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/00-sarao-bg
       -o /etc/dconf/db/local.d/00-sarao-test
     - >-
       curtin in-target -- curl -s
-      https://raw.githubusercontent.com/ska₋sa/ubuntu-install/main/01-sarao-gdm
+      https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/01-sarao-gdm
       -o /etc/dconf/db/gdm.d/01-sarao-gdm-test
     # Check whether necessary
     #- >-
