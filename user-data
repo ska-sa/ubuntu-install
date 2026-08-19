@@ -29,11 +29,11 @@ autoinstall:
     - >-
       curtin in-target -- curl -s
       https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/00-sarao-bg
-      -o /etc/dconf/db/local.d/00-sarao-test
+      -o /etc/dconf/db/local.d/00-sarao
     - >-
       curtin in-target -- curl -s
       https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/01-sarao-gdm
-      -o /etc/dconf/db/gdm.d/01-sarao-gdm-test
+      -o /etc/dconf/db/gdm.d/01-sarao-gdm
     # Check whether necessary
     #- >-
     #  curtin in-target -- bash -c
