@@ -28,7 +28,7 @@ autoinstall:
       -o /usr/share/backgrounds/sarao/meerkat-sky.jpg
     - >-
       curtin in-target -- curl -s
-      https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/00-sarao-bg
+      https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/00-sarao
       -o /etc/dconf/db/local.d/00-sarao
     - >-
       curtin in-target -- curl -s
