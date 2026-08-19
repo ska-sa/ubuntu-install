@@ -10,16 +10,14 @@ autoinstall:
       name: lvm
       policy: all
   timezone: Africa/Johannesburg
+  hostname: nrf-sarao
+  users: ['']
   packages:
     - curl
     - gh
     - git
     - vim
 
-  # Set hostname and defer settting up user
-  identity:
-    hostname: nrf-sarao
-    users: ['']
 
   late-commands:
     # Wallpapers
@@ -42,11 +40,11 @@ autoinstall:
     #  "[ -f /etc/dconf/profile/gdm ] || printf 'user-db:user\nsystem-db:gdm\nfile-db:/usr/share/gdm/greeter-dconf-defaults\n' > /etc/dconf/profile/gdm"
     - curtin in-target -- dconf update
     # IT Administrator user
-    - curtin in-target -- adduser --disabled-password --gecos "SARAO IT Administrators" it-admin
-    - >-
-      curtin in-target -- usermod -aG
-      sudo,adm,cdrom,dip,plugdev,lpadmin,sambashare,netdev,audio,video,lxd it-admin
-    - >-
-      curtin in-target -- bash -c
-      "echo 'it-admin:$6$8IbpfCMIXpjWXyau$X/SwgC9V9iEvb9yo.ey0kM7LpaoErBFvYs9VXZ5PNRlunrUlL7ZLP8UNhewogO4hujMvzmjo8S7mz.0MQwq0C0' | chpasswd -e"
+    #- curtin in-target -- adduser --disabled-password --gecos "SARAO IT Administrators" it-admin
+    #- >-
+    #  curtin in-target -- usermod -aG
+    #  sudo,adm,cdrom,dip,plugdev,lpadmin,sambashare,netdev,audio,video,lxd it-admin
+    #- >-
+    #  curtin in-target -- bash -c
+    #  "echo 'it-admin:$6$8IbpfCMIXpjWXyau$X/SwgC9V9iEvb9yo.ey0kM7LpaoErBFvYs9VXZ5PNRlunrUlL7ZLP8UNhewogO4hujMvzmjo8S7mz.0MQwq0C0' | chpasswd -e"
 
