@@ -9,3 +9,4 @@ Intended for use with standard Ubuntu 26.04 installer
 1. During normal installation, step 3 join network, step 4 choose Autoinstall.
 2. Address: `https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/user-data`
 
+Or... save user-data as /autoinstall.yaml and reburn ISO.
