@@ -19,7 +19,6 @@ autoinstall:
     - git
     - vim
 
-
   late-commands:
     # Wallpapers
     - curtin in-target -- mkdir -p /usr/share/backgrounds/sarao /etc/dconf/db/local.d /etc/dconf/db/gdm.d
