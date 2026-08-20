@@ -13,7 +13,7 @@ sed -i 's#quiet splash#quiet splash autoinstall ds=nocloud-net;s=https://raw.git
 sed -i 's/set timeout=[0-9]*/set timeout=3/' /tmp/iso-new/boot/grub/grub.cfg
 
 cd /tmp/iso-new
-$xorriso -as mkisofs -r -V "SARAO-Ubuntu-26"  /
+xorriso -as mkisofs -r -V "SARAO-Ubuntu-26"  /
   --modification-date='2026082007585100' /
   --grub2-mbr --interval:local_fs:0s-15s:zero_mbrpt,zero_gpt:'/home/jan/Downloads/ubuntu-26.04-desktop-amd64.iso' /
   --protective-msdos-label /
