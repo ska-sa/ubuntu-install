@@ -8,7 +8,7 @@ autoinstall:
   storage:
     layout:
       name: lvm
-      policy: all
+      sizing-policy: all
   timezone: Africa/Johannesburg
   hostname: nrf-sarao
   users: ['']
