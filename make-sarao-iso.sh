@@ -4,13 +4,13 @@
 #xorriso -indev ~/Downloads/ubuntu-26.04-desktop-amd64.iso -report_el_torito as_mkisofs > ~/ubuntu-install/boot_opts.txt
 
 mkdir -p /tmp/iso-orig /tmp/iso-new
-sudo mount -o loop ~/Downloads/ubuntu-26.04-desktop-amd64.iso ~/iso-orig
+sudo mount -o loop ~/Downloads/ubuntu-26.04-desktop-amd64.iso /tmp/iso-orig || exit
 rsync -a /tmp/iso-orig/ /tmp/iso-new/
 sudo umount /tmp/iso-orig
 
 chmod +w /tmp/iso-new/boot/grub/grub.cfg
-sed -i 's#quiet splash#quiet splash autoinstall ds=nocloud-net;s=https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/#' /tmp/iso-new/boot/grub/grub.cfg
-sed -i 's/set timeout=[0-9]*/set timeout=3/' /tmp/iso-new/boot/grub/grub.cfg
+sudo sed -i 's#quiet splash#quiet splash autoinstall ds=nocloud-net;s=https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/#' /tmp/iso-new/boot/grub/grub.cfg
+sudo sed -i 's/set timeout=[0-9]*/set timeout=3/' /tmp/iso-new/boot/grub/grub.cfg
 
 cd /tmp/iso-new
 xorriso -as mkisofs -r -V "SARAO-Ubuntu-26"  /
