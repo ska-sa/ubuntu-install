@@ -18,7 +18,7 @@ xorriso -osirrox on \
 # The \\; produces a literal \; in grub.cfg, so GRUB passes
 # the semicolon to the kernel instead of treating it as a command separator.
 sed -i \
-    "s#quiet splash#quiet splash autoinstall ds=nocloud-net\\\\;s=$SEED_URL#" \
+    "s#--- quiet splash#autoinstall ds=nocloud-net\\\\;s=$SEED_URL --- quiet splash#" \
     "$GRUB_CFG"
 
 # Reduce the GRUB menu timeout.
