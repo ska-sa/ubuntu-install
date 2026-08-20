@@ -3,15 +3,21 @@
 # Get default boot options
 #xorriso -indev ~/Downloads/ubuntu-26.04-desktop-amd64.iso -report_el_torito as_mkisofs > ~/ubuntu-install/boot_opts.txt
 
+# Mount and copy Ubuntu installer
+sudo rm -rf /tmp/iso-orig /tmp/iso-new
 mkdir -p /tmp/iso-orig /tmp/iso-new
-sudo mount -o loop ~/Downloads/ubuntu-26.04-desktop-amd64.iso /tmp/iso-orig || exit
-rsync -a /tmp/iso-orig/ /tmp/iso-new/
+sudo mount -o loop ~/Downloads/ubuntu-26.04-desktop-amd64.iso /tmp/iso-orig
+sudo rsync -a /tmp/iso-orig/ /tmp/iso-new/
 sudo umount /tmp/iso-orig
 
+# Edit copy of installer
+sudo chown -R "$USER:$USER" /tmp/iso-new
+chmod +w /tmp/iso-new/boot/grub
 chmod +w /tmp/iso-new/boot/grub/grub.cfg
-sudo sed -i 's#quiet splash#quiet splash autoinstall ds=nocloud-net;s=https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/#' /tmp/iso-new/boot/grub/grub.cfg
-sudo sed -i 's/set timeout=[0-9]*/set timeout=3/' /tmp/iso-new/boot/grub/grub.cfg
+sed -i 's#quiet splash#quiet splash autoinstall ds=nocloud-net;s=https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/#' /tmp/iso-new/boot/grub/grub.cfg
+sed -i 's/set timeout=[0-9]*/set timeout=3/' /tmp/iso-new/boot/grub/grub.cfg
 
+# Create new ISO
 cd /tmp/iso-new
 xorriso -as mkisofs -r -V "SARAO-Ubuntu-26"  \
   --modification-date='2026082007585100' \
