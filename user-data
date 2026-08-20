@@ -10,8 +10,6 @@ autoinstall:
       name: lvm
       sizing-policy: all
   timezone: Africa/Johannesburg
-  hostname: nrf-sarao
-  users: ['']
   packages:
     - curl
     - dconf-cli
@@ -19,12 +17,15 @@ autoinstall:
     - git
     - vim
 
+  user-data:
+    hostname: nrf-sarao
+    users: ['']
+
   late-commands:
-    # Wallpapers
+    # Wallpaper (desktop only — GDM background dropped, not worth the fragility)
     - curtin in-target -- mkdir -p
       /usr/share/backgrounds/sarao
       /etc/dconf/db/local.d
-      /etc/dconf/db/gdm.d
     - >-
       curtin in-target -- curl -s
       https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/meerkat-sky.jpg
@@ -34,25 +35,7 @@ autoinstall:
       https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/00-sarao
       -o /etc/dconf/db/local.d/00-sarao
     - >-
-      curtin in-target -- curl -s
-      https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/01-sarao-gdm
-      -o /etc/dconf/db/gdm.d/01-sarao-gdm
-    - >-
       curtin in-target -- bash -c
       "[ -f /etc/dconf/profile/user ] ||
       printf 'user-db:user\nsystem-db:local\n' > /etc/dconf/profile/user"
-    - >-
-      curtin in-target -- bash -c
-      "[ -f /etc/dconf/profile/gdm ] ||
-      printf 'user-db:user\nsystem-db:gdm\nfile-db:/usr/share/gdm/greeter-dconf-defaults\n'
-      > /etc/dconf/profile/gdm"
     - curtin in-target -- dconf update
-    # IT Administrator user
-    #- curtin in-target -- adduser --disabled-password --gecos "SARAO IT Administrators" it-admin
-    #- >-
-    #  curtin in-target -- usermod -aG
-    #  sudo,adm,cdrom,dip,plugdev,lpadmin,sambashare,netdev,audio,video,lxd it-admin
-    #- >-
-    #  curtin in-target -- bash -c
-    #  "echo 'it-admin:$6$8IbpfCMIXpjWXyau$X/SwgC9V9iEvb9yo.ey0kM7LpaoErBFvYs9VXZ5PNRlunrUlL7ZLP8UNhewogO4hujMvzmjo8S7mz.0MQwq0C0' | chpasswd -e"
-
