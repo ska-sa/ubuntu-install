@@ -18,7 +18,7 @@ autoinstall:
     - vim
 
   user-data:
-    hostname: nrf-sarao
+    hostname: sarao
     users: ['']
 
   late-commands:
