@@ -30,14 +30,9 @@ xorriso -as mkisofs -r -V "SARAO-Ubuntu-26"  \
   -appended_part_as_gpt \
   -iso_mbr_part_type a2a0d0ebe5b9334487c068b6b72699c7 \
   -c '/boot.catalog' \
-  -b '/boot/grub/i386-pc/eltorito.img' \
-  -no-emul-boot \
-  -boot-load-size 4 \
-  -boot-info-table \
-  --grub2-boot-info \
-  -eltorito-alt-boot \
   -e '--interval:appended_partition_2_start_3180353s_size_10296d:all::' \
   -no-emul-boot \
   -boot-load-size 10296 \
   -J -joliet-long \
-  -o ~/ubuntu-install/sarao-ubuntu-26.iso
+  -o ~/ubuntu-install/sarao-ubuntu-26.iso \
+  .
