@@ -5,7 +5,7 @@ set -euo pipefail
 ORIGINAL_ISO="$HOME/Downloads/ubuntu-26.04-desktop-amd64.iso"
 OUTPUT_ISO="$HOME/ubuntu-install/sarao-ubuntu-26.iso"
 GRUB_CFG="/tmp/sarao-grub.cfg"
-SEED_URL="https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/"
+SEED_URL="https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/user-data"
 
 rm -f "$OUTPUT_ISO" "$GRUB_CFG"
 
