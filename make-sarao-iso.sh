@@ -33,6 +33,13 @@ sed -i \
     's/set timeout=[0-9]*/set timeout=3/' \
     "$GRUB_CFG"
 
+# Add passwords from local secret files
+WIFI-PASS=$(cat ~/.sarao-wifi­pass)
+ITADMIN_HASH="$(openssl passwd -6 -stdin < ~/.sarao-itadmin)"
+printf '%s' "$ITADMIN_HASH" > /tmp/itadmin.hash
+RENDERED_USER_DATA="/tmp/user-data-rendered"
+sed "s/WIFI_PASSWORD/$WIFI_PASSWORD/" "$USER_DATA" > "$RENDERED_USER_DATA"
+
 # Rebuild from the original ISO: swap in grub.cfg, and add the seed files.
 xorriso \
     -indev "$ORIGINAL_ISO" \
@@ -40,8 +47,10 @@ xorriso \
     -map "$GRUB_CFG" /boot/grub/grub.cfg \
     -map "$USER_DATA" /nocloud/user-data \
     -map "$META_DATA" /nocloud/meta-data \
+    -map /tmp/itadmin.hash /nocloud/itadmin.hash \
     -boot_image any replay \
     -commit
 
+sync
 echo "Created $OUTPUT_ISO"
 
