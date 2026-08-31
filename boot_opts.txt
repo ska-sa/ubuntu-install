@@ -1,11 +1,11 @@
 -V 'Ubuntu 26.04 amd64'
 --modification-date='2026042302185100'
---grub2-mbr --interval:local_fs:0s-15s:zero_mbrpt,zero_gpt:'/home/jan/Downloads/ubuntu-26.04-desktop-amd64.iso'
+--grub2-mbr --interval:local_fs:0s-15s:zero_mbrpt,zero_gpt:'/home/jan/Downloads/ubuntu-26.04.1-desktop-amd64.iso'
 --protective-msdos-label
 -partition_cyl_align off
 -partition_offset 16
 --mbr-force-bootable
--append_partition 2 28732ac11ff8d211ba4b00a0c93ec93b --interval:local_fs:12721412d-12731707d::'/home/jan/Downloads/ubuntu-26.04-desktop-amd64.iso'
+-append_partition 2 28732ac11ff8d211ba4b00a0c93ec93b --interval:local_fs:12721412d-12731707d::'/home/jan/Downloads/ubuntu-26.04.1-desktop-amd64.iso'
 -appended_part_as_gpt
 -iso_mbr_part_type a2a0d0ebe5b9334487c068b6b72699c7
 -c '/boot.catalog'
