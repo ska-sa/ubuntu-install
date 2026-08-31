@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-ORIGINAL_ISO="$HOME/Downloads/ubuntu-26.04-desktop-amd64.iso"
+ORIGINAL_ISO="$HOME/Downloads/ubuntu-26.04.1-desktop-amd64.iso"
 OUTPUT_ISO="$HOME/ubuntu-install/sarao-ubuntu-26.iso"
 GRUB_CFG="/tmp/sarao-grub.cfg"
 USER_DATA="$HOME/ubuntu-install/user-data"
