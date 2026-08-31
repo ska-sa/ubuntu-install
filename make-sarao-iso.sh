@@ -34,7 +34,7 @@ sed -i \
     "$GRUB_CFG"
 
 # Add passwords from local secret files
-WIFI_PASS=$(cat ~/.sarao-wifi-pass)
+WIFI_PASSWORD=$(cat ~/.sarao-wifi-pass)
 ITADMIN_HASH="$(openssl passwd -6 -stdin < ~/.sarao-itadmin)"
 printf '%s' "$ITADMIN_HASH" > /tmp/itadmin.hash
 RENDERED_USER_DATA="/tmp/user-data-rendered"
