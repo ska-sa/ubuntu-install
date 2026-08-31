@@ -45,9 +45,10 @@ xorriso \
     -indev "$ORIGINAL_ISO" \
     -outdev "$OUTPUT_ISO" \
     -map "$GRUB_CFG" /boot/grub/grub.cfg \
-    -map "$USER_DATA" /nocloud/user-data \
+    -map "$RENDERED_USER_DATA" /nocloud/user-data \
     -map "$META_DATA" /nocloud/meta-data \
     -map /tmp/itadmin.hash /nocloud/itadmin.hash \
+    -map "$HOME/ubuntu-install/KOC751iUX.ppd" /nocloud/KOC751iUX.ppd \
     -boot_image any replay \
     -commit
 

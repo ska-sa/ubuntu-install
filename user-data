@@ -9,7 +9,7 @@ autoinstall:
     wifis:
       wlp*:
         access-points:
-          "SARAO_Guest"
+          "SARAO_Guest":
             password: "WIFI_PASSWORD"
         dhcp4: true
   shutdown: reboot
