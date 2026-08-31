@@ -5,11 +5,12 @@ autoinstall:
     layout: us
   locale: en_ZA.UTF-8
   network:
+    version: 2
     renderer: NetworkManager
     ethernets:
       enp*:
         dhcp4: true
-    version: 2
+        optional: true
     wifis:
       wlp*:
         access-points:
