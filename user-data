@@ -8,11 +8,15 @@ autoinstall:
     version: 2
     renderer: NetworkManager
     ethernets:
-      enp*:
+      eth0:
+        match:
+          name: "enp*"
         dhcp4: true
         optional: true
     wifis:
-      wlp*:
+      wlan0:
+        match:
+          name: "wlp*"
         access-points:
           "SARAO_Guest":
             password: "WIFI_PASSWORD"
