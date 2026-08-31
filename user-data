@@ -8,6 +8,7 @@ autoinstall:
     version: 2
     wifis:
       wlp*:
+        optional: true
         access-points:
           "SARAO_Guest":
             password: "WIFI_PASSWORD"
