@@ -108,7 +108,7 @@ autoinstall:
       'u=999; while getent passwd $u >/dev/null; do u=$((u-1)); done; useradd -m -u $u -c "SARAO IT Administrators" -s /bin/bash itadmin'
     - >-
       curtin in-target -- usermod -aG
-      sudo,adm,cdrom,dip,plugdev,lpadmin,netdev,audio,video,lxd itadmin
+      sudo,adm,cdrom,dip,plugdev,lpadmin,netdev,audio,video,lxd,users itadmin
     - >-
       echo "itadmin:$(cat /cdrom/nocloud/itadmin.hash)" | curtin in-target -- chpasswd -e
     - curtin in-target -- mkdir -p /var/lib/AccountsService/users
