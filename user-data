@@ -103,7 +103,9 @@ autoinstall:
     - curtin in-target -- dconf update
       >>/var/log/sarao-late-commands.log 2>&1 || true
     # IT Administrator user 999 with passwordless sudo
-    - curtin in-target -- useradd -m -u 999 -c "SARAO IT Administrators" -s /bin/bash itadmin
+    - >-
+      curtin in-target -- bash -c
+      'u=999; while getent passwd $u >/dev/null; do u=$((u-1)); done; useradd -m -u $u -c "SARAO IT Administrators" -s /bin/bash itadmin'
     - >-
       curtin in-target -- usermod -aG
       sudo,adm,cdrom,dip,plugdev,lpadmin,sambashare,netdev,audio,video,lxd itadmin
