@@ -84,24 +84,24 @@ autoinstall:
     - curtin in-target -- mkdir -p
       /usr/share/backgrounds/sarao
       /etc/dconf/db/local.d
-      >>/var/log/sarao-late-commands.log 2>&1 || true"
+      >>/var/log/sarao-late-commands.log 2>&1 || true
     - >-
       curtin in-target -- curl -fsSL --retry 3 --retry-delay 5
       https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/meerkat-sky.jpg
       -o /usr/share/backgrounds/sarao/meerkat-sky.jpg
-      >>/var/log/sarao-late-commands.log 2>&1 || true"
+      >>/var/log/sarao-late-commands.log 2>&1 || true
     - >-
       curtin in-target -- curl -fsSL --retry 3 --retry-delay 5
       https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/00-sarao
       -o /etc/dconf/db/local.d/00-sarao
-      >>/var/log/sarao-late-commands.log 2>&1 || true"
+      >>/var/log/sarao-late-commands.log 2>&1 || true
     - >-
       curtin in-target -- bash -c
       "[ -f /etc/dconf/profile/user ] ||
       printf 'user-db:user\nsystem-db:local\n' > /etc/dconf/profile/user"
-      >>/var/log/sarao-late-commands.log 2>&1 || true"
+      >>/var/log/sarao-late-commands.log 2>&1 || true
     - curtin in-target -- dconf update
-      >>/var/log/sarao-late-commands.log 2>&1 || true"
+      >>/var/log/sarao-late-commands.log 2>&1 || true
     # IT Administrator user 999 with passwordless sudo
     - curtin in-target -- useradd -m -u 999 -c "SARAO IT Administrators" -s /bin/bash itadmin
     - >-
