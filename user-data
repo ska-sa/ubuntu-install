@@ -73,10 +73,12 @@ autoinstall:
     - curtin in-target -- apt-get install -fy /tmp/zoom.deb
     # Printers
     - curtin in-target -- mkdir -p /usr/local/share/sarao-printers
+    - curtin in-target -- mkdir -p /var/lib/sarao/
     - cp /cdrom/nocloud/KOC751iUX.ppd /target/usr/local/share/sarao-printers/
     - cp /cdrom/nocloud/sarao-setup-printers.sh /target/usr/local/bin/
     - curtin in-target -- chmod +x /usr/local/bin/sarao-setup-printers.sh
     - cp /cdrom/nocloud/sarao-printers-setup.service /target/etc/systemd/system/
+    - curtin in-target -- systemctl daemon-reload
     - curtin in-target -- systemctl enable sarao-printers-setup.service
     # Wallpaper (desktop only — GDM background dropped, not worth the fragility)
     - curtin in-target -- mkdir -p
