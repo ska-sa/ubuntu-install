@@ -50,6 +50,7 @@ xorriso \
     -map /tmp/itadmin.hash /nocloud/itadmin.hash \
     -map "$HOME/ubuntu-install/KOC751iUX.ppd" /nocloud/KOC751iUX.ppd \
     -map "$HOME/ubuntu-install/itsm_tdoSnrqk_ccsl_installer.run" /nocloud/itsm_tdoSnrqk_ccsl_installer.run \
+i  -map "$HOME/ubuntu-install/sarao-xcitium-install.service" /nocloud/sarao-xcitium-install.service \
     -map "$HOME/ubuntu-install/sarao-setup-printers.sh" /nocloud/sarao-setup-printers.sh \
     -map "$HOME/ubuntu-install/sarao-printers-setup.service" /nocloud/sarao-printers-setup.service \
     -boot_image any replay \

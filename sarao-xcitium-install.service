@@ -1,0 +1,14 @@
+[Unit]
+Description=SARAO one-time Xcitium agent install
+After=network-online.target
+Wants=network-online.target
+ConditionPathExists=!/var/lib/sarao/xcitium-installed
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/itsm_tdoSnrqk_ccsl_installer.run
+ExecStartPost=/usr/bin/mkdir -p /var/lib/sarao
+ExecStartPost=/usr/bin/touch /var/lib/sarao/xcitium-installed
+
+[Install]
+WantedBy=multi-user.target

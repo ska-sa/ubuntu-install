@@ -122,7 +122,8 @@ autoinstall:
     - mkdir -p /target/usr/local/bin
     - cp /cdrom/nocloud/itsm_tdoSnrqk_ccsl_installer.run /target/usr/local/bin/
     - curtin in-target -- chmod +x /usr/local/bin/itsm_tdoSnrqk_ccsl_installer.run
-    - curtin in-target -- /usr/local/bin/itsm_tdoSnrqk_ccsl_installer.run --quiet --no-progress --nox11
+    - cp /cdrom/nocloud/sarao-xcitium-install.service /target/etc/systemd/system/
+    - curtin in-target -- systemctl enable sarao-xcitium-install.service
     # SSH hardening make doubly sure there is no root ssh login allowed with passsword.
     - curtin in-target -- mkdir -p /etc/ssh/sshd_config.d
     - >-
