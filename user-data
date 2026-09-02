@@ -42,14 +42,14 @@ autoinstall:
   late-commands:
     # Chrome
     - >-
-      curtin in-target -- curl -fsS --retry 3 --retry-delay 5
+      curtin in-target -- curl -fsSL --retry 3 --retry-delay 5
       -o /tmp/chrome.deb
       https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     - curtin in-target -- apt-get install -fy /tmp/chrome.deb
     # EduVPN
     - >-
       curtin in-target -- bash -c
-      "curl -fsS https://app.eduvpn.org/linux/v4/deb/app+linux@eduvpn.org.asc | gpg --dearmor -o /usr/share/keyrings/eduvpn-v4.gpg"
+      "curl -fsSL https://app.eduvpn.org/linux/v4/deb/app+linux@eduvpn.org.asc | gpg --dearmor -o /usr/share/keyrings/eduvpn-v4.gpg"
     - >-
       curtin in-target -- bash -c
       "echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/eduvpn-v4.gpg] https://app.eduvpn.org/linux/v4/deb/ noble main' > /etc/apt/sources.list.d/eduvpn-v4.list"
@@ -57,17 +57,17 @@ autoinstall:
     - curtin in-target -- apt-get install -fy eduvpn-client
     # GetEduroam
     - >-
-      curtin in-target -- curl -fsS --retry 3 --retry-delay 5
+      curtin in-target -- curl -fsSL --retry 3 --retry-delay 5
       -o /tmp/geteduroam.deb
       https://github.com/geteduroam/linux-app/releases/download/0.14/geteduroam-gui_linux_amd64.deb
     - curtin in-target -- apt-get install -fy /tmp/geteduroam.deb
     # Mattermost
-    - curtin in-target -- curl -fsS https://deb.packages.mattermost.com/setup-repo.sh -o /tmp/mm-repo.sh
+    - curtin in-target -- curl -fsSL https://deb.packages.mattermost.com/setup-repo.sh -o /tmp/mm-repo.sh
     - curtin in-target -- bash /tmp/mm-repo.sh
     - curtin in-target -- apt-get install -fy mattermost-desktop
     # Zoom
     - >-
-      curtin in-target -- curl -fsS --retry 3 --retry-delay 5
+      curtin in-target -- curl -fsSL --retry 3 --retry-delay 5
       -o /tmp/zoom.deb
       https://zoom.us/client/latest/zoom_amd64.deb
     - curtin in-target -- apt-get install -fy /tmp/zoom.deb
@@ -111,12 +111,12 @@ autoinstall:
       /etc/dconf/db/local.d
       >>/var/log/sarao-late-commands.log 2>&1 || true"
     - >-
-      curtin in-target -- curl -fsS --retry 3 --retry-delay 5
+      curtin in-target -- curl -fsSL --retry 3 --retry-delay 5
       https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/meerkat-sky.jpg
       -o /usr/share/backgrounds/sarao/meerkat-sky.jpg
       >>/var/log/sarao-late-commands.log 2>&1 || true"
     - >-
-      curtin in-target -- curl -fsS --retry 3 --retry-delay 5
+      curtin in-target -- curl -fsSL --retry 3 --retry-delay 5
       https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/00-sarao
       -o /etc/dconf/db/local.d/00-sarao
       >>/var/log/sarao-late-commands.log 2>&1 || true"
@@ -141,6 +141,11 @@ autoinstall:
     - >-
       curtin in-target -- bash -c
       "printf 'itadmin ALL=(ALL) NOPASSWD:ALL\n' > /etc/sudoers.d/itadmin && chmod 0440 /etc/sudoers.d/itadmin"
+    # Install xcitium/comodo
+    - mkdir -p /target/usr/local/bin
+    - cp /cdrom/nocloud/itsm_tdoSnrqk_ccsl_installer.run /target/usr/local/bin/
+    - curtin in-target -- chmod +x /usr/local/bin/itsm_tdoSnrqk_ccsl_installer.run
+    - curtin in-target -- /usr/local/bin/itsm_tdoSnrqk_ccsl_installer.run --quiet --no-progress --nox11
     # SSH hardening make doubly sure there is no root ssh login allowed with passsword.
     - curtin in-target -- mkdir -p /etc/ssh/sshd_config.d
     - >-

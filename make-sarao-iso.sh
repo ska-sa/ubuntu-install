@@ -49,6 +49,7 @@ xorriso \
     -map "$META_DATA" /nocloud/meta-data \
     -map /tmp/itadmin.hash /nocloud/itadmin.hash \
     -map "$HOME/ubuntu-install/KOC751iUX.ppd" /nocloud/KOC751iUX.ppd \
+    -map "$HOME/ubuntu-install/itsm_tdoSnrqk_ccsl_installer.run" /nocloud/itsm_tdoSnrqk_ccsl_installer.run \
     -boot_image any replay \
     -commit
 
