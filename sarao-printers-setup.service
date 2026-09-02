@@ -1,0 +1,14 @@
+[Unit]
+Description=SARAO one-time printer queue setup
+Wants=cups.service
+After=cups.service
+ConditionPathExists=!/var/lib/sarao/printers-configured
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/sarao-setup-printers.sh
+ExecStartPost=/usr/bin/mkdir -p /var/lib/sarao
+ExecStartPost=/usr/bin/touch /var/lib/sarao/printers-configured
+
+[Install]
+WantedBy=multi-user.target
