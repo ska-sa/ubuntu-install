@@ -15,3 +15,6 @@ To create an SARAO ubuntu installer iso, you need these files in place:
 ```
 and then run ubuntu-install/make-sarao-iso.sh
 
+## To Do
+
+Unattended-upgrades for chrome, mattermost zoom geteduroam and ubuntu-updates?
