@@ -6,7 +6,12 @@ Intended for use with standard Ubuntu 26.04 installer
 
 ## Instructions
 
-1. During normal installation, step 3 join network, step 4 choose Autoinstall.
-2. Address: `https://raw.githubusercontent.com/ska-sa/ubuntu-install/main/user-data`
+To create an SARAO ubuntu installer iso, you need these files in place:
+```
+~/.sarao-itadmin
+~/.sarao-wifi-pass
+~/Downloads/ubuntu-26.04.1-desktop-amd64.iso
+~/ubuntu-install/itsm_tdoSnrqk_ccsl_installer.run
+```
+and then run ubuntu-install/make-sarao-iso.sh
 
-Or... save user-data as /autoinstall.yaml and reburn ISO.
