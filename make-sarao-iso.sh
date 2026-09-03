@@ -35,7 +35,7 @@ sed -i \
 
 # Add passwords from local secret files
 WIFI_PASSWORD=$(cat ~/.sarao-wifi-pass)
-ITADMIN_HASH="$(openssl passwd -6 -stdin < ~/.sarao-itadmin)"
+ITADMIN_HASH="$(openssl passwd -6 -stdin < ~/.sarao-itadmin-clear)"
 printf '%s' "$ITADMIN_HASH" > /tmp/itadmin.hash
 RENDERED_USER_DATA="/tmp/user-data-rendered"
 sed "s/WIFI_PASSWORD/$WIFI_PASSWORD/" "$USER_DATA" > "$RENDERED_USER_DATA"
