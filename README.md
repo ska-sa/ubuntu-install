@@ -3,7 +3,7 @@
 
 ## WARNING
 
-This installer performs an automated full-disk install from a USB EFI boot, wiping any existing OS!
+This installer performs a fully automated full-disk install from a USB EFI boot, wiping any existing OS! If you boot a laptop to it and walk away, it will wipe the disk without waiting for confirmation.
 
 ## What it does
 
