@@ -7,9 +7,10 @@ This installer performs a fully automated full-disk install from a USB EFI boot,
 
 ## What it does non-interactively from boot
 
-* Boots to Try or Install Ubuntu after 3 seconds
-* Automated full-disk install of Ubuntu desktop 24.04.1
-* Excludes Libreoffice and Thunderbird
+* GRUB automatically boots to Try or Install Ubuntu after 3 seconds
+* Installer autostarts
+* Automated full-disk install of Ubuntu Desktop 26.04.1
+* source: ubuntu-desktop (not -full, excludes Libreoffice and Thunderbird)
 * Saves SARAO Guest Wifi and password
 * Adds packages cups, curl, dconf-cli, git, gh, vim
 * Adds third-party zoom, mattermost, google-chrome
