@@ -7,21 +7,24 @@ This installer performs a fully automated full-disk install from a USB EFI boot,
 
 ## What it does
 
+* Automated full-disk install of Ubuntu desktop 24.04.1
+* Excludes Libreoffice and Thunderbird)
+* Saves SARAO Guest Wifi and password
 * Adds packages cups, curl, dconf-cli, git, gh, vim
 * Adds third-party zoom, mattermost, google-chrome
+* Adds third-party unconfigured geteduroam and eduvpn apps
+* Adds (hidden) itadmin user and password with sudo
 * Installs xcitium, does not link to user profile
-* Save SARAO Guest Wifi and password
-* Install geteduroam and eduvpn apps
-* Add Cape Town Office printers (6) and Konika Minolta PPD driver file
-* Hidden itadmin user and password
-* Set default user wallpaper to meerkat-sky.jpg
+* Adds Cape Town Office printers (6) and Konika Minolta PPD driver file
+* Sets default user wallpaper to meerkat-sky.jpg
+* Reboots to Add-a-User (including sudo)
 
 ## Instructions
 
 To create an SARAO ubuntu installer iso, you need these files in place:
 ```
 ~/.sarao-itadmin-clear # cleartext itadmin user password
-~/.sarao-wifi-pass # cleartext SARAO Guest wifi password
+~/.sarao-wifi-pass # cleartext SARAO Guest wifi password (ask V)
 ~/Downloads/ubuntu-26.04.1-desktop-amd64.iso
 ~/ubuntu-install/itsm_tdoSnrqk_ccsl_installer.run # Linux bulk installer
 ```
@@ -36,5 +39,4 @@ and then run `~/ubuntu-install/make-sarao-iso.sh`
 * Add docker-cli with unattended-upgrades
 * Coding environments, e.g. code, jupyter? AI integration?
 * Set xcitium/comodo to CPUQuota=50% to prevent scanning slowdowns
-* Based on https://releases.ubuntu.com/26.04/ubuntu-26.04.1-desktop-amd64.iso
 * pdf-arranger? useful apps?
