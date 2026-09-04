@@ -24,7 +24,7 @@ To create an SARAO ubuntu installer iso, you need these files in place:
 ```
 and then run `~/ubuntu-install/make-sarao-iso.sh`
 
-## Considerations:
+## Considerations for To Do:
 
 * Unattended upgrades for zoom, mattermost, chrome, and -updates
 * Add forticlient app
