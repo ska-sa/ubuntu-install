@@ -5,10 +5,11 @@
 
 This installer performs a fully automated full-disk install from a USB EFI boot, wiping any existing OS! If you boot a laptop to it and walk away, it will wipe the disk without waiting for confirmation.
 
-## What it does
+## What it does non-interactively from boot
 
+* Boots to Try or Install Ubuntu after 3 seconds
 * Automated full-disk install of Ubuntu desktop 24.04.1
-* Excludes Libreoffice and Thunderbird)
+* Excludes Libreoffice and Thunderbird
 * Saves SARAO Guest Wifi and password
 * Adds packages cups, curl, dconf-cli, git, gh, vim
 * Adds third-party zoom, mattermost, google-chrome
