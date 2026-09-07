@@ -1,6 +1,5 @@
 # ubuntu-install for SARAO laptops
 
-
 ## WARNING
 
 This installer performs a fully automated full-disk install from a USB EFI boot, wiping any existing OS! If you boot a laptop to it and walk away, it will wipe the disk without waiting for confirmation.
@@ -42,3 +41,8 @@ and then run `~/ubuntu-install/make-sarao-iso.sh`
 * Coding environments, e.g. code, jupyter? AI integration?
 * Set xcitium/comodo to CPUQuota=50% to prevent scanning slowdowns
 * pdf-arranger? useful apps?
+
+## Autoinstall reference
+
+[https://canonical-subiquity.readthedocs-hosted.com/en/latest/reference/autoinstall-reference.html](https://canonical-subiquity.readthedocs-hosted.com/en/latest/reference/autoinstall-reference.html)
+
