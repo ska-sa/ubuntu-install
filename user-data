@@ -4,6 +4,10 @@ autoinstall:
   keyboard:
     layout: us
   locale: en_ZA.UTF-8
+  driver:
+    install: true
+  codecs:
+    install: true
   network:
     version: 2
     renderer: NetworkManager
