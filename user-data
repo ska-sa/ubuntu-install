@@ -63,7 +63,7 @@ autoinstall:
     - >-
       curtin in-target -- curl -fsSL --retry 3 --retry-delay 5
       -o /tmp/geteduroam.deb
-      https://github.com/geteduroam/linux-app/releases/download/0.14/geteduroam-gui_linux_amd64.deb
+      https://github.com/geteduroam/linux-app/releases/download/0.15/geteduroam-gui_linux_amd64.deb
     - curtin in-target -- apt-get install -fy /tmp/geteduroam.deb
     # ManageEngine
     - curtin in-target -- curl --retry 3 --retry-delay 5 http://sdp-services.sdp.kat.ac.za/serverinfo.json -o /tmp/serverinfo.json
