@@ -1,0 +1,16 @@
+[Unit]
+Description=SARAO one-time ManageEngine agent install
+After=network-online.target
+Wants=network-online.target
+ConditionPathExists=!/var/lib/sarao/manageengine-installed
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/UEMS_LinuxAgent_x64.bin
+ExecStartPre=/usr/bin/mkdir -p /var/lib/sarao
+WorkingDirectory=/var/lib/sarao
+ExecStartPost=/usr/bin/touch /var/lib/sarao/manageengine-installed
+ExecStartPost=/usr/bin/rm -f /var/lib/sarao/serverinfo.json
+
+[Install]
+WantedBy=multi-user.target

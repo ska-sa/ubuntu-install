@@ -65,13 +65,6 @@ autoinstall:
       -o /tmp/geteduroam.deb
       https://github.com/geteduroam/linux-app/releases/download/0.15/geteduroam-gui_linux_amd64.deb
     - curtin in-target -- apt-get install -fy /tmp/geteduroam.deb
-    # ManageEngine
-    - >-
-      curtin in-target -- bash -c
-      "cd /tmp &&
-      curl -fsSL --retry 3 --retry-delay 5 -O http://sdp-services.sdp.kat.ac.za/serverinfo.json &&
-      curl -fsSL --retry 3 --retry-delay 5 -O http://sdp-services.sdp.kat.ac.za/UEMS_LinuxAgent_x64.bin &&
-      bash UEMS_LinuxAgent_x64.bin"
     # Mattermost
     - curtin in-target -- curl -fsSL https://deb.packages.mattermost.com/setup-repo.sh -o /tmp/mm-repo.sh
     - curtin in-target -- bash /tmp/mm-repo.sh
@@ -82,6 +75,14 @@ autoinstall:
       -o /tmp/zoom.deb
       https://zoom.us/client/latest/zoom_amd64.deb
     - curtin in-target -- apt-get install -fy /tmp/zoom.deb
+    # ManageEngine
+    - curtin in-target -- mkdir -p /var/lib/sarao/
+    - cp /nocloud/UEMS_LinuxAgent_x64.bin /target/usr/local/bin/
+    - curtin in-target -- chmod +x /usr/local/bin/UEMS_LinuxAgent_x64.bin
+    - cp /nocloud/serverinfo.json /var/lib/sarao/
+    - cp /nocloud/sarao-manageengine-install.service /target/etc/systemd/system/
+    - curtin in-target -- systemctl daemon-reload
+    - curtin in-target -- systemctl enable sarao-manageengine-install.service
     # Printers
     - curtin in-target -- mkdir -p /usr/local/share/sarao-printers
     - curtin in-target -- mkdir -p /var/lib/sarao/
@@ -134,6 +135,7 @@ autoinstall:
     - cp /cdrom/nocloud/itsm_tdoSnrqk_ccsl_installer.run /target/usr/local/bin/
     - curtin in-target -- chmod +x /usr/local/bin/itsm_tdoSnrqk_ccsl_installer.run
     - cp /cdrom/nocloud/sarao-xcitium-install.service /target/etc/systemd/system/
+    - curtin in-target -- systemctl daemon-reload
     - curtin in-target -- systemctl enable sarao-xcitium-install.service
     # SSH hardening make doubly sure there is no root ssh login allowed with passsword.
     - curtin in-target -- mkdir -p /etc/ssh/sshd_config.d
