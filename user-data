@@ -76,7 +76,8 @@ autoinstall:
       https://zoom.us/client/latest/zoom_amd64.deb
     - curtin in-target -- apt-get install -fy /tmp/zoom.deb
     # ManageEngine
-    - curtin in-target -- mkdir -p /var/lib/sarao/
+    - curtin in-target -- mkdir -p /var/lib/sarao
+    - curtin in-target -- mkdir -p /usr/local/bin
     - cp /nocloud/UEMS_LinuxAgent_x64.bin /target/usr/local/bin/
     - curtin in-target -- chmod +x /usr/local/bin/UEMS_LinuxAgent_x64.bin
     - cp /nocloud/serverinfo.json /var/lib/sarao/
