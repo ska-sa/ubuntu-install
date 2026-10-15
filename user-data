@@ -78,10 +78,10 @@ autoinstall:
     # ManageEngine
     - curtin in-target -- mkdir -p /var/lib/sarao
     - curtin in-target -- mkdir -p /usr/local/bin
-    - cp /nocloud/UEMS_LinuxAgent_x64.bin /target/usr/local/bin/
+    - cp /cdrom//nocloud/UEMS_LinuxAgent_x64.bin /target/usr/local/bin/
     - curtin in-target -- chmod +x /usr/local/bin/UEMS_LinuxAgent_x64.bin
-    - cp /nocloud/serverinfo.json /var/lib/sarao/
-    - cp /nocloud/sarao-manageengine-install.service /target/etc/systemd/system/
+    - cp /cdrom/nocloud/serverinfo.json /var/lib/sarao/
+    - cp /cdrom/nocloud/sarao-manageengine-install.service /target/etc/systemd/system/
     - curtin in-target -- systemctl daemon-reload
     - curtin in-target -- systemctl enable sarao-manageengine-install.service
     # Printers
